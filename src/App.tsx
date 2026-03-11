@@ -2,13 +2,13 @@ import { useState, useCallback, useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { getStoredUsername } from '@/lib/username';
 import { ThemeProvider } from '@/contexts/ThemeContext';
-import { LoadingScreen } from '@/components/LoadingScreen';
-import { SignupModal } from '@/components/SignupModal';
-import { Layout } from '@/components/Layout';
-import { CreatePostCard } from '@/components/CreatePostCard';
-import { PostList } from '@/components/PostList';
-import { DeleteModal } from '@/components/DeleteModal';
-import { EditModal } from '@/components/EditModal';
+import { LoadingScreen } from '@/components/layout/LoadingScreen';
+import { SignupModal } from '@/components/auth/SignupModal';
+import { Layout } from '@/components/layout/Layout';
+import { CreatePostCard } from '@/components/posts/CreatePostCard';
+import { PostList } from '@/components/posts/PostList';
+import { DeleteModal } from '@/components/posts/DeleteModal';
+import { EditModal } from '@/components/posts/EditModal';
 import type { Post } from '@/api/client';
 import {
   useCreatePostMutation,

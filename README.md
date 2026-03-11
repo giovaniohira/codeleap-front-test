@@ -70,11 +70,15 @@ Post shape: `id`, `username`, `created_datetime`, `title`, `content`.
 
 ```
 src/
-  api/          # API client and types
-  components/   # UI components (SignupModal, Layout, CreatePostCard, PostCard, PostList, modals)
-  hooks/        # usePosts (React Query)
-  lib/          # username storage, relativeTime
-  test/         # Vitest setup
+  api/              # API client and types
+  components/
+    auth/           # SignupModal
+    layout/         # Layout, Logo, ThemeToggle, LoadingScreen
+    posts/          # CreatePostCard, PostCard, PostList, Edit/Delete modals
+  contexts/         # ThemeContext
+  hooks/            # usePosts (React Query)
+  lib/              # username storage, theme storage, relativeTime
+  test/             # Vitest setup
   App.tsx
   main.tsx
   index.css

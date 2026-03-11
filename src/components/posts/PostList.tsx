@@ -1,5 +1,5 @@
 import type { Post } from '@/api/client';
-import { PostCard } from '@/components/PostCard';
+import { PostCard } from './PostCard';
 import { usePostsQuery } from '@/hooks/usePosts';
 import styles from './PostList.module.css';
 
