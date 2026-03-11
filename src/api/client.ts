@@ -1,23 +1,6 @@
-const BASE_URL = 'https://dev.codeleap.co.uk/careers/';
+import type { CreatePostPayload, Post, UpdatePostPayload } from './types';
 
-export type Post = {
-  id: number;
-  username: string;
-  created_datetime: string;
-  title: string;
-  content: string;
-};
-
-export type CreatePostPayload = {
-  username: string;
-  title: string;
-  content: string;
-};
-
-export type UpdatePostPayload = {
-  title: string;
-  content: string;
-};
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 async function request<T>(
   path: string,

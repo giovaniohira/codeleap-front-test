@@ -6,7 +6,7 @@ import {
   useEffect,
   type ReactNode,
 } from 'react';
-import { getStoredTheme, setStoredTheme, type Theme } from '@/lib/theme';
+import { getStoredTheme, setStoredTheme, type Theme } from '@/lib';
 
 type ThemeContextValue = {
   theme: Theme;

@@ -1,22 +1,12 @@
 import { useState, useCallback, useEffect } from 'react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { getStoredUsername } from '@/lib/username';
-import { ThemeProvider } from '@/contexts/ThemeContext';
-import { LoadingScreen } from '@/components/layout/LoadingScreen';
-import { SignupModal } from '@/components/auth/SignupModal';
-import { Layout } from '@/components/layout/Layout';
-import { CreatePostCard } from '@/components/posts/CreatePostCard';
-import { PostList } from '@/components/posts/PostList';
-import { DeleteModal } from '@/components/posts/DeleteModal';
-import { EditModal } from '@/components/posts/EditModal';
-import type { Post } from '@/api/client';
-import {
-  useCreatePostMutation,
-  useUpdatePostMutation,
-  useDeletePostMutation,
-} from '@/hooks/usePosts';
-
-const queryClient = new QueryClient();
+import { QueryClientProvider } from '@tanstack/react-query';
+import type { Post } from '@/api';
+import { Layout, LoadingScreen } from '@/components/layout';
+import { SignupModal } from '@/components/auth';
+import { CreatePostCard, PostList, DeleteModal, EditModal } from '@/components/posts';
+import { ThemeProvider } from '@/contexts';
+import { useCreatePostMutation, useUpdatePostMutation, useDeletePostMutation } from '@/hooks';
+import { getStoredUsername, queryClient } from '@/lib';
 
 function AppContent() {
   const [username, setUsername] = useState(getStoredUsername);

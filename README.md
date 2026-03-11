@@ -24,6 +24,7 @@ A simple CRUD application for the CodeLeap Network: sign up with a username, cre
 ## Setup and run
 
 ```bash
+cp .env.example .env   # configure API base URL
 npm install
 npm run dev
 ```
@@ -46,7 +47,7 @@ Frontend tests use **Vitest** and **React Testing Library**:
 
 - `src/lib/relativeTime.test.ts` — relative time formatting
 - `src/api/client.test.ts` — API client (mocked `fetch`)
-- `src/components/SignupModal.test.tsx` — signup form and ENTER button state
+- `src/components/auth/SignupModal.test.tsx` — signup form and ENTER button state
 
 Run: `npm run test`
 
@@ -70,18 +71,22 @@ Post shape: `id`, `username`, `created_datetime`, `title`, `content`.
 
 ```
 src/
-  api/              # API client and types
+  api/              # API client, types, and barrel export
+    types.ts        # Post, CreatePostPayload, UpdatePostPayload
+    client.ts       # HTTP request layer (fetch wrapper)
+    index.ts        # public API re-exports
   components/
-    auth/           # SignupModal
-    layout/         # Layout, Logo, ThemeToggle, LoadingScreen
-    posts/          # CreatePostCard, PostCard, PostList, Edit/Delete modals
-  contexts/         # ThemeContext
-  hooks/            # usePosts (React Query)
-  lib/              # username storage, theme storage, relativeTime
+    auth/           # SignupModal + barrel
+    layout/         # Layout, Logo, ThemeToggle, LoadingScreen + barrel
+    posts/          # CreatePostCard, PostCard, PostList, Edit/Delete modals + barrel
+  contexts/         # ThemeContext + barrel
+  hooks/            # usePosts (React Query) + barrel
+  lib/              # username, theme, relativeTime, queryClient + barrel
   test/             # Vitest setup
   App.tsx
   main.tsx
   index.css
+.env.example        # Required environment variables
 ```
 
 ## Deployment

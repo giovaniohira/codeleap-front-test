@@ -1,6 +1,6 @@
-import type { Post } from '@/api/client';
+import type { Post } from '@/api';
+import { usePostsQuery } from '@/hooks';
 import { PostCard } from './PostCard';
-import { usePostsQuery } from '@/hooks/usePosts';
 import styles from './PostList.module.css';
 
 type Props = {

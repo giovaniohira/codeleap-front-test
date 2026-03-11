@@ -1,4 +1,4 @@
-import type { Post } from '@/api/client';
+import type { Post } from '@/api';
 import styles from './Modal.module.css';
 
 type Props = {

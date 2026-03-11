@@ -1,5 +1,5 @@
-import type { Post } from '@/api/client';
-import { getRelativeTime } from '@/lib/relativeTime';
+import type { Post } from '@/api';
+import { getRelativeTime } from '@/lib';
 import styles from './PostCard.module.css';
 
 type Props = {

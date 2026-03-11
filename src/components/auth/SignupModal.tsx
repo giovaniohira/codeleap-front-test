@@ -1,6 +1,6 @@
 import { useState, FormEvent } from 'react';
-import { setStoredUsername } from '@/lib/username';
-import { ThemeToggle } from '../layout/ThemeToggle';
+import { ThemeToggle } from '@/components/layout';
+import { setStoredUsername } from '@/lib';
 import styles from './SignupModal.module.css';
 
 type Props = {

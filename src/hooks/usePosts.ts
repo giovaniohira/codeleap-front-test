@@ -3,7 +3,7 @@ import {
   useMutation,
   useQueryClient,
 } from '@tanstack/react-query';
-import { api, type Post, type CreatePostPayload, type UpdatePostPayload } from '@/api/client';
+import { api, type Post, type CreatePostPayload, type UpdatePostPayload } from '@/api';
 
 const QUERY_KEY = ['posts'] as const;
 
