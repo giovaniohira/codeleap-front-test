@@ -1,0 +1,9 @@
+.logo {
+  height: 40px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+  object-fit: contain;
+  /* White-on-black logo: blend so black disappears and only white shows on header */
+  mix-blend-mode: lighten;
+}
