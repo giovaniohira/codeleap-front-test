@@ -1,0 +1,44 @@
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.list li {
+  animation: postItemReveal 0.5s var(--ease-out) both;
+}
+
+.list li:nth-child(1) { animation-delay: 0.02s; }
+.list li:nth-child(2) { animation-delay: 0.06s; }
+.list li:nth-child(3) { animation-delay: 0.1s; }
+.list li:nth-child(4) { animation-delay: 0.14s; }
+.list li:nth-child(5) { animation-delay: 0.18s; }
+.list li:nth-child(6) { animation-delay: 0.22s; }
+.list li:nth-child(7) { animation-delay: 0.26s; }
+.list li:nth-child(8) { animation-delay: 0.3s; }
+.list li:nth-child(n + 9) { animation-delay: 0.34s; }
+
+@keyframes postItemReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.state {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  border: 1px solid var(--color-border);
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  animation: postItemReveal 0.4s var(--ease-out) both;
+}
