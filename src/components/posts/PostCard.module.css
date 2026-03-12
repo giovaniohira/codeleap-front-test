@@ -89,3 +89,24 @@
   white-space: pre-wrap;
   word-break: break-word;
 }
+
+@media (max-width: 600px) {
+  .header {
+    padding: 14px 16px;
+  }
+
+  .body {
+    padding: 16px;
+  }
+
+  .meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    font-size: 14px;
+  }
+
+  .content {
+    font-size: 16px;
+  }
+}

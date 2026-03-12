@@ -127,3 +127,23 @@
   color: var(--color-text-secondary);
   transform: none;
 }
+
+@media (max-width: 600px) {
+  .modal {
+    padding: 20px 16px;
+  }
+
+  .title {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .prompt {
+    font-size: 14px;
+  }
+
+  .enterButton {
+    width: 100%;
+    justify-content: center;
+  }
+}

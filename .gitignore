@@ -36,3 +36,5 @@ mcps/
 
 # Misc
 *.tsbuildinfo
+
+.vercel

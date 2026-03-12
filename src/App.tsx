@@ -12,6 +12,7 @@ function AppContent() {
   const [username, setUsername] = useState(getStoredUsername);
   const [postToDelete, setPostToDelete] = useState<Post | null>(null);
   const [postToEdit, setPostToEdit] = useState<Post | null>(null);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
 
   const createPost = useCreatePostMutation();
   const updatePost = useUpdatePostMutation();
@@ -38,9 +39,19 @@ function AppContent() {
 
   const handleConfirmDelete = useCallback(async () => {
     if (!postToDelete) return;
-    await deletePost.mutateAsync(postToDelete.id);
-    setPostToDelete(null);
+    setDeleteError(null);
+    try {
+      await deletePost.mutateAsync(postToDelete.id);
+      setPostToDelete(null);
+    } catch (err) {
+      setDeleteError(err instanceof Error ? err.message : 'Failed to delete. Please try again.');
+    }
   }, [postToDelete, deletePost]);
+
+  const handleCancelDelete = useCallback(() => {
+    setPostToDelete(null);
+    setDeleteError(null);
+  }, []);
 
   if (!username) {
     return <SignupModal onEnter={setUsername} />;
@@ -59,7 +70,8 @@ function AppContent() {
       <DeleteModal
         post={postToDelete}
         onConfirm={handleConfirmDelete}
-        onCancel={() => setPostToDelete(null)}
+        onCancel={handleCancelDelete}
+        error={deleteError}
       />
       <EditModal
         post={postToEdit}

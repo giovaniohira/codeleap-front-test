@@ -39,3 +39,15 @@
   flex-direction: column;
   gap: 24px;
 }
+
+@media (max-width: 600px) {
+  .header {
+    padding: 16px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .main {
+    padding: 20px 16px 0;
+  }
+}

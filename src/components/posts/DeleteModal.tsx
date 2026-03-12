@@ -5,9 +5,10 @@ type Props = {
   post: Post | null;
   onConfirm: () => void;
   onCancel: () => void;
+  error?: string | null;
 };
 
-export function DeleteModal({ post, onConfirm, onCancel }: Props) {
+export function DeleteModal({ post, onConfirm, onCancel, error }: Props) {
   if (!post) return null;
 
   return (
@@ -22,6 +23,11 @@ export function DeleteModal({ post, onConfirm, onCancel }: Props) {
         <h2 id="delete-title" className={styles.title}>
           Are you sure you want to delete this item?
         </h2>
+        {error && (
+          <p className={styles.error} role="alert">
+            {error}
+          </p>
+        )}
         <div className={styles.actions}>
           <button
             type="button"

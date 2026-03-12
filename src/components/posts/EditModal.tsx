@@ -8,15 +8,21 @@ type Props = {
   onCancel: () => void;
 };
 
+function getErrorMessage(err: unknown): string {
+  return err instanceof Error ? err.message : 'Something went wrong. Please try again.';
+}
+
 export function EditModal({ post, onSave, onCancel }: Props) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (post) {
       setTitle(post.title);
       setContent(post.content);
+      setError(null);
     }
   }, [post]);
 
@@ -28,10 +34,13 @@ export function EditModal({ post, onSave, onCancel }: Props) {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!canSubmit) return;
+    setError(null);
     setSubmitting(true);
     try {
       await onSave(title.trim(), content.trim());
       onCancel();
+    } catch (err) {
+      setError(getErrorMessage(err));
     } finally {
       setSubmitting(false);
     }
@@ -57,7 +66,7 @@ export function EditModal({ post, onSave, onCancel }: Props) {
             id="edit-title-input"
             type="text"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => { setTitle(e.target.value); setError(null); }}
             placeholder="Hello world"
             className={styles.input}
             disabled={submitting}
@@ -68,12 +77,17 @@ export function EditModal({ post, onSave, onCancel }: Props) {
           <textarea
             id="edit-content-input"
             value={content}
-            onChange={(e) => setContent(e.target.value)}
+            onChange={(e) => { setContent(e.target.value); setError(null); }}
             placeholder="Content here"
             className={styles.textarea}
             rows={4}
             disabled={submitting}
           />
+          {error && (
+            <p className={styles.error} role="alert">
+              {error}
+            </p>
+          )}
           <div className={styles.actions}>
             <button
               type="button"

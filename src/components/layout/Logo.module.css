@@ -7,3 +7,9 @@
   /* White-on-black logo: blend so black disappears and only white shows on header */
   mix-blend-mode: lighten;
 }
+
+@media (max-width: 600px) {
+  .logo {
+    height: 28px;
+  }
+}
